@@ -26,4 +26,4 @@ app.use((error, req, res, next) => {
         .json({ error: error.toString() });
 });
 
-app.listen(3000, () => 'server listening...');
+app.listen(3000, () => console.log('server listening...'));

@@ -1,12 +1,9 @@
 import express from 'express';
+import { getAllScores, createScore } from './controller/scoreController.js';
 const index = express.Router();
 
 index.route('/score')
-    .get((req, res) => {
-        res.status(200).json({ message: 'Hello, world!' });
-    })
-    .post((req, res) => {
-        res.status(201).json({ message: 'Score created!' });
-    });
+    .get(getAllScores)
+    .post(createScore);
 
 export default index;
