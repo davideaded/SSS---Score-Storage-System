@@ -3,13 +3,24 @@ import { NotFoundError } from '../errors/errors.js'
 
 const prisma = new PrismaClient({});
 
-export async function getAllScores() {
-    const scores = await prisma.score.findMany({
-        orderBy: {
-            value: 'desc'
-        }
-    });
-    if (!scores[0]) throw new NotFoundError("Scores don't exist");
+export async function getAllScores(pagination) {
+    let scores = null;
+    if (pagination === null) {
+        scores = await prisma.score.findMany({
+            orderBy: {
+                value: 'desc'
+            }
+        });
+    } else {
+        const { page, limit } = pagination;
+        scores = await prisma.score.findMany({
+            orderBy: {
+                value: 'desc',
+            },
+            skip: page * limit,
+            take: limit 
+        });
+    }
     return scores;
 }
 

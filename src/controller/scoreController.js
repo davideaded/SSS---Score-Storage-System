@@ -3,7 +3,14 @@ import { BadRequestError } from '../errors/errors.js';
 
 async function getAllScores(req, res, next) {
     try {
-        const scores = await scoreService.getAllScores();
+        let scores = null;
+        if (JSON.stringify(req.query) === '{}') {
+            scores = await scoreService.getAllScores(null);
+        } else {
+            const page = parseInt(req.query.page);
+            const limit = parseInt(req.query.limit);
+            scores = await scoreService.getAllScores({ page, limit });
+        }
         res.status(200).json({ scores });
     } catch (err) {
         next(err);
