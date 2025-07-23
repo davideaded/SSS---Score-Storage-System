@@ -17,7 +17,7 @@ export async function getAllScores(pagination) {
             orderBy: {
                 value: 'desc',
             },
-            skip: page * limit,
+            skip: (page - 1) * limit,
             take: limit 
         });
     }
