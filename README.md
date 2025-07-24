@@ -27,9 +27,10 @@ Actual API being used by my [snake game](https://davideaded.github.io/snakegame/
 1. Clone the repository: `https://github.com/davideaded/SSS---Score-Storage-System`
 2. Navigate to the project directory: `cd SSS---Score-Storage-System`
 3. Install the required dependencies: `npm install`
-4. Start the server: `npm run start`
+4. Set up database: `npx prisma db push`
+5. Start the server: `npm run start`
 
 # Usage
 
-1. Setup .env (`DATABASE_URL=<db_connection_string>`)
+1. Set up .env (`DATABASE_URL=<db_connection_string>`)
 2. Make HTTP requests to the API endpoints
